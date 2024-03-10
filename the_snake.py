@@ -63,9 +63,8 @@ class GameObject:
 
 # Класс Snake наследуемый от GameObject
 class Snake(GameObject):
-        """Класс Snake для описания змейки."""
+    """Класс Snake для описания змейки."""
 
-    # Метод __init__ класса Snake
     def __init__(self):
         self.length = 1
         self.positions = [(320, 240)]
