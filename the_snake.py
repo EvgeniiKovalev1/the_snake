@@ -47,18 +47,24 @@ clock = pygame.time.Clock()
 
 # Класс GameObject
 class GameObject:
+    """Класс GameObject представляет объекты на игровом поле.
+    """
+
     # Метод __init__ класса GameObject
     def __init__(self, position=(320, 240), body_color=(0, 0, 0)):
         self.position = position
         self.body_color = body_color
 
-    # Метод класса GameObject
+    # Метод draw класса GameObject
     def draw(self, surface):
         pass
+    """Метод draw для отрисовки обьектов."""
 
 
 # Класс Snake наследуемый от GameObject
 class Snake(GameObject):
+        """Класс Snake для описания змейки."""
+
     # Метод __init__ класса Snake
     def __init__(self):
         self.length = 1
@@ -69,12 +75,15 @@ class Snake(GameObject):
 
     # Метод update_diretion класса Snake
     def update_direction(self):
+        """Метод для описания сменны движения змеи."""
         if self.next_direction:
             self.direction = self.next_direction
             self.next_direction = None
+            
 
     # Метод move обьекта Snake
     def move(self):
+        """Метод для описания движения змеи."""
         new_head = (
             self.positions[0][0] + GRID_SIZE * self.direction[0],
             self.positions[0][1] + GRID_SIZE * self.direction[1],
@@ -96,10 +105,12 @@ class Snake(GameObject):
 
     # Метод для получения головы змеи
     def get_head_position(self):
+        """Метод для получения головы змеи. """
         return self.positions[0]
 
     # Метод для перезапуска игры при столкновении с самим собой
     def reset(self):
+        """Метод для перезапуска игры."""
         self.length = 1
         self.positions = [(320, 240)]
         self.direction = RIGHT
@@ -107,6 +118,7 @@ class Snake(GameObject):
 
     # Метод draw класса Snake
     def draw(self, surface):
+        """Метод для отрисовки змеи."""
         for position in self.positions[:-1]:
             rect = pygame.Rect(
                 (position[0], position[1]), (GRID_SIZE, GRID_SIZE)
@@ -124,6 +136,8 @@ class Snake(GameObject):
 
 # Класс Apple наследуемый от GameObject
 class Apple(GameObject):
+    """Класс Apple для описания обьекта яблока."""
+
     # Метод __init__ класса Apple
     def __init__(self):
         self.body_color = APPLE_COLOR
@@ -131,6 +145,7 @@ class Apple(GameObject):
 
     # Метод randomize_pozition класса Apple
     def randomize_position(self):
+        """Метод определяющий положение яблока."""
         self.position = (
             randint(0, GRID_WIDTH - 1) * GRID_SIZE,
             randint(0, GRID_HEIGHT - 1) * GRID_SIZE,
@@ -138,6 +153,7 @@ class Apple(GameObject):
 
     # Метод draw класса Apple
     def draw(self, surface):
+        """Метод отрисовки яблока."""
         rect = pygame.Rect((self.position[0], self.position[1]), (GRID_SIZE, GRID_SIZE))
         pygame.draw.rect(surface, self.body_color, rect)
         pygame.draw.rect(surface, BORDER_COLOR, rect, 1)
@@ -145,6 +161,7 @@ class Apple(GameObject):
 
 # Функция обработки действий пользователя
 def handle_keys(game_object):
+    """Метод обрабатывающий действия пользователя."""
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -162,6 +179,7 @@ def handle_keys(game_object):
 
 # Функция main
 def main():
+    """Функция для запуска игры"""
     snake = Snake()
     apple = Apple()
 
