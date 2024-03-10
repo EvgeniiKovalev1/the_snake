@@ -149,7 +149,7 @@ class Apple(GameObject):
     def draw(self, surface):
         """Метод отрисовки яблока."""
         rect = pygame.Rect((self.position[0], self.position[1]),
-                           п(GRID_SIZE, GRID_SIZE))
+                           (GRID_SIZE, GRID_SIZE))
         pygame.draw.rect(surface, self.body_color, rect)
         pygame.draw.rect(surface, BORDER_COLOR, rect, 1)
 
