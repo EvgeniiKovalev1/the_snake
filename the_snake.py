@@ -117,10 +117,9 @@ class Snake(GameObject):
     def draw(self, surface):
         """Метод для отрисовки змеи."""
         for position in self.positions[:-1]:
-            rect = pygame.Rect
-            (
+            rect = pygame.Rect(
                 (position[0], position[1]), (GRID_SIZE, GRID_SIZE)
-            )
+                            )
             pygame.draw.rect(surface, self.body_color, rect)
             pygame.draw.rect(surface, BORDER_COLOR, rect, 1)
 
@@ -150,10 +149,9 @@ class Apple(GameObject):
     # Метод draw класса Apple
     def draw(self, surface):
         """Метод отрисовки яблока."""
-        rect = pygame.Rect
-        (
+        rect = pygame.Rect(
             (self.position[0], self.position[1]), (GRID_SIZE, GRID_SIZE)
-        )
+                        )
         pygame.draw.rect(surface, self.body_color, rect)
         pygame.draw.rect(surface, BORDER_COLOR, rect, 1)
 
