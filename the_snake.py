@@ -36,7 +36,7 @@ clock = pygame.time.Clock()
 class GameObject:
     """Класс GameObject представляет объекты на игровом поле."""
 
-    def __init__(self, body_color = APPLE_COLOR):
+    def __init__(self, body_color=APPLE_COLOR):
         self.position = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
         self.body_color = body_color
 
@@ -48,7 +48,7 @@ class GameObject:
 class Snake(GameObject):
     """Класс Snake для описания змейки."""
 
-    def __init__(self, body_color = SNAKE_COLOR):
+    def __init__(self, body_color=SNAKE_COLOR):
         super().__init__(body_color)
         self.length = 1
         self.positions = [(320, 240)]
@@ -96,14 +96,15 @@ class Snake(GameObject):
     def draw(self, surface):
         """Метод для отрисовки змеи."""
         for position in self.positions[:-1]:
-            rect = pygame.Rect(position, (GRID_SIZE, GRID_SIZE)) 
+            rect = pygame.Rect(position, (GRID_SIZE, GRID_SIZE))
             pygame.draw.rect(surface, self.body_color, rect)
             pygame.draw.rect(surface, BORDER_COLOR, rect, 1)
+
 
 class Apple(GameObject):
     """Класс Apple для описания обьекта яблока."""
 
-    def __init__(self, body_color = APPLE_COLOR):
+    def __init__(self, body_color=APPLE_COLOR):
         super().__init__(body_color)
         self.randomize_position()
 
@@ -116,8 +117,7 @@ class Apple(GameObject):
 
     def draw(self, surface):
         """Метод отрисовки яблока."""
-        rect = pygame.Rect((self.position[0], self.position[1]),
-                           (GRID_SIZE, GRID_SIZE))
+        rect = pygame.Rect((self.position[0], self.position[1]), (GRID_SIZE, GRID_SIZE))
         pygame.draw.rect(surface, self.body_color, rect)
         pygame.draw.rect(surface, BORDER_COLOR, rect, 1)
 
