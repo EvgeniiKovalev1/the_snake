@@ -151,9 +151,13 @@ def main():
 
         if (
             not (0 <= snake.get_head_position()[0] < GRID_WIDTH * GRID_SIZE)
-            or not (0 <= snake.get_head_position()[1] < GRID_HEIGHT * GRID_SIZE)
+            or not
+            (
+                0 <= snake.get_head_position()[1] < GRID_HEIGHT * GRID_SIZE
+            )
             or any(
-                snake.get_head_position() in segment for segment in snake.positions[1:]
+                snake.get_head_position() in segment
+                for segment in snake.positions[1:]
             )
         ):
             snake.reset()
