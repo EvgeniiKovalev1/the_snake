@@ -47,10 +47,10 @@ class GameObject:
         pass
 
     def draw_rect(self, position):
-       """Метод для отрисовки."""
-       rect = pygame.Rect(position, (GRID_SIZE, GRID_SIZE))
-       pygame.draw.rect(screen, self.body_color, rect)
-       pygame.draw.rect(screen, BORDER_COLOR, rect, 1)
+        """Метод для отрисовки."""
+        rect = pygame.Rect(position, (GRID_SIZE, GRID_SIZE))
+        pygame.draw.rect(screen, self.body_color, rect)
+        pygame.draw.rect(screen, BORDER_COLOR, rect, 1)
 
 
 class Snake(GameObject):
@@ -93,7 +93,6 @@ class Snake(GameObject):
         for position in self.positions[:-1]:
             self.draw_rect(position)
         self.draw_rect(self.get_head_position())
-
 
 
 class Apple(GameObject):
@@ -152,13 +151,9 @@ def main():
 
         if (
             not (0 <= snake.get_head_position()[0] < GRID_WIDTH * GRID_SIZE)
-            or not
-            (
-                0 <= snake.get_head_position()[1] < GRID_HEIGHT * GRID_SIZE
-            )
+            or not (0 <= snake.get_head_position()[1] < GRID_HEIGHT * GRID_SIZE)
             or any(
-                snake.get_head_position() in segment
-                for segment in snake.positions[1:]
+                snake.get_head_position() in segment for segment in snake.positions[1:]
             )
         ):
             snake.reset()
